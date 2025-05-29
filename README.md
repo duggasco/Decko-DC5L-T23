@@ -5,7 +5,7 @@ PTZ: no
 Onvif: Yes
 CPU: T23
 Sensors: TBD
-Wireless: TBD
+Wireless: BL-M35343XU1
 
 **binwalk output:**
 
