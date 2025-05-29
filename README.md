@@ -1,4 +1,4 @@
-Shop link: [](https://www.amazon.com/dp/B09GK7RHSM)
+Shop link: [Amazon](https://www.amazon.com/dp/B09GK7RHSM)
 
 Model: DC5L
 
