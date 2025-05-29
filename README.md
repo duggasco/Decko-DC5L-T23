@@ -1,10 +1,15 @@
+Shop link: [](https://www.amazon.com/dp/B09GK7RHSM)
 
-Shop link: [https://www.amazon.com/dp/B0DFLJHQ2Q](https://www.amazon.com/dp/B09GK7RHSM)
 Model: DC5L
+
 PTZ: no
+
 Onvif: Yes
+
 CPU: T23
-Sensors: TBD
+
+Sensors: sc3332p
+
 Wireless: BL-M35343XU1
 
 **binwalk output:**
