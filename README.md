@@ -160,6 +160,454 @@ DECIMAL       HEXADECIMAL     DESCRIPTION
 binwalk export tree:
 
 ```
+.
+├── bin
+│   ├── [ -> busybox
+│   ├── [[ -> busybox
+│   ├── ash -> busybox
+│   ├── awk -> busybox
+│   ├── base64 -> busybox
+│   ├── basename -> busybox
+│   ├── busybox
+│   ├── cal -> busybox
+│   ├── cat -> busybox
+│   ├── catv -> busybox
+│   ├── chgrp -> busybox
+│   ├── chmod -> busybox
+│   ├── chown -> busybox
+│   ├── clear -> busybox
+│   ├── cmp -> busybox
+│   ├── cp -> busybox
+│   ├── cryptpw -> busybox
+│   ├── cttyhack -> busybox
+│   ├── date -> busybox
+│   ├── dd -> busybox
+│   ├── deallocvt -> busybox
+│   ├── df -> busybox
+│   ├── diff -> busybox
+│   ├── dirname -> busybox
+│   ├── dmesg -> busybox
+│   ├── dnsdomainname -> busybox
+│   ├── dos2unix -> busybox
+│   ├── du -> busybox
+│   ├── dumpleases -> busybox
+│   ├── echo -> busybox
+│   ├── ed -> busybox
+│   ├── egrep -> busybox
+│   ├── env -> busybox
+│   ├── false -> busybox
+│   ├── fdflush -> busybox
+│   ├── fgrep -> busybox
+│   ├── find -> busybox
+│   ├── flock -> busybox
+│   ├── fold -> busybox
+│   ├── free -> busybox
+│   ├── fsync -> busybox
+│   ├── ftpget -> busybox
+│   ├── ftpput -> busybox
+│   ├── fuser -> busybox
+│   ├── getopt -> busybox
+│   ├── grep -> busybox
+│   ├── groups -> busybox
+│   ├── gzip -> busybox
+│   ├── hd -> busybox
+│   ├── hexdump -> busybox
+│   ├── hostid -> busybox
+│   ├── hostname -> busybox
+│   ├── hush -> busybox
+│   ├── id -> busybox
+│   ├── iostat -> busybox
+│   ├── ipcalc -> busybox
+│   ├── ipcrm -> busybox
+│   ├── ipcs -> busybox
+│   ├── kill -> busybox
+│   ├── killall -> busybox
+│   ├── less -> busybox
+│   ├── linux32 -> busybox
+│   ├── linux64 -> busybox
+│   ├── ln -> busybox
+│   ├── logger -> busybox
+│   ├── login -> busybox
+│   ├── logname -> busybox
+│   ├── ls -> busybox
+│   ├── lsof -> busybox
+│   ├── lsusb -> busybox
+│   ├── md5sum -> busybox
+│   ├── mesg -> busybox
+│   ├── mkdir -> busybox
+│   ├── mknod -> busybox
+│   ├── mkpasswd -> busybox
+│   ├── mktemp -> busybox
+│   ├── mount -> busybox
+│   ├── mountpoint -> busybox
+│   ├── mpstat -> busybox
+│   ├── mv -> busybox
+│   ├── nc -> busybox
+│   ├── netstat -> busybox
+│   ├── nmeter -> busybox
+│   ├── nslookup -> busybox
+│   ├── passwd -> busybox
+│   ├── pgrep -> busybox
+│   ├── pidof -> busybox
+│   ├── ping -> busybox
+│   ├── ping6 -> busybox
+│   ├── pkill -> busybox
+│   ├── pmap -> busybox
+│   ├── printenv -> busybox
+│   ├── printf -> busybox
+│   ├── ps -> busybox
+│   ├── pscan -> busybox
+│   ├── pstree -> busybox
+│   ├── pwd -> busybox
+│   ├── pwdx -> busybox
+│   ├── readlink -> busybox
+│   ├── realpath -> busybox
+│   ├── renice -> busybox
+│   ├── reset -> busybox
+│   ├── resize -> busybox
+│   ├── rev -> busybox
+│   ├── rm -> busybox
+│   ├── rmdir -> busybox
+│   ├── sed -> busybox
+│   ├── seq -> busybox
+│   ├── setarch -> busybox
+│   ├── sh -> busybox
+│   ├── sleep -> busybox
+│   ├── smemcap -> busybox
+│   ├── sort -> busybox
+│   ├── stat -> busybox
+│   ├── sum -> busybox
+│   ├── sync -> busybox
+│   ├── tail -> busybox
+│   ├── tar -> busybox
+│   ├── tcpsvd -> busybox
+│   ├── telnet -> busybox
+│   ├── test -> busybox
+│   ├── tftp -> busybox
+│   ├── time -> busybox
+│   ├── timeout -> busybox
+│   ├── top -> busybox
+│   ├── touch -> busybox
+│   ├── tr -> busybox
+│   ├── traceroute -> busybox
+│   ├── traceroute6 -> busybox
+│   ├── true -> busybox
+│   ├── tty -> busybox
+│   ├── ttysize -> busybox
+│   ├── udpsvd -> busybox
+│   ├── umount -> busybox
+│   ├── uname -> busybox
+│   ├── unix2dos -> busybox
+│   ├── unzip -> busybox
+│   ├── uptime -> busybox
+│   ├── usleep -> busybox
+│   ├── uudecode -> busybox
+│   ├── uuencode -> busybox
+│   ├── vi -> busybox
+│   ├── vlock -> busybox
+│   ├── volname -> busybox
+│   ├── watch -> busybox
+│   ├── wc -> busybox
+│   ├── wget -> busybox
+│   ├── whoami -> busybox
+│   ├── whois -> busybox
+│   ├── xargs -> busybox
+│   └── yes -> busybox
+├── dev
+├── etc
+├── etc_default
+│   ├── autorun_enable
+│   ├── etc_helper.sh
+│   ├── fs-version
+│   ├── group
+│   ├── init.d
+│   │   ├── S20modules
+│   │   ├── S80network
+│   │   ├── S90application
+│   │   └── rcS
+│   ├── inittab
+│   ├── mdev
+│   │   ├── auto_do_mount.sh
+│   │   ├── auto_mount.sh
+│   │   ├── safe_run.sh
+│   │   └── u_auto_mount.sh
+│   ├── mdev.conf
+│   ├── motd
+│   ├── mtab
+│   ├── passwd
+│   ├── profile
+│   ├── rootfs_env.sh
+│   ├── sdcard.sh
+│   ├── shadow
+│   ├── sysctl.conf
+│   ├── syslog.conf
+│   └── version.txt
+├── lib
+│   ├── ld-uClibc-0.9.33.2.so
+│   ├── ld-uClibc.so.0 -> ld-uClibc-0.9.33.2.so
+│   ├── libc.so.0 -> libuClibc-0.9.33.2.so
+│   ├── libcrypt-0.9.33.2.so
+│   ├── libcrypt.so.0 -> libcrypt-0.9.33.2.so
+│   ├── libdl-0.9.33.2.so
+│   ├── libdl.so.0 -> libdl-0.9.33.2.so
+│   ├── libgcc_s.so
+│   ├── libgcc_s.so.1
+│   ├── libm-0.9.33.2.so
+│   ├── libm.so.0 -> libm-0.9.33.2.so
+│   ├── libnsl-0.9.33.2.so
+│   ├── libnsl.so.0 -> libnsl-0.9.33.2.so
+│   ├── libpthread-0.9.33.2.so
+│   ├── libpthread.so.0 -> libpthread-0.9.33.2.so
+│   ├── libresolv-0.9.33.2.so
+│   ├── libresolv.so.0 -> libresolv-0.9.33.2.so
+│   ├── librt-0.9.33.2.so
+│   ├── librt.so.0 -> librt-0.9.33.2.so
+│   ├── libstdc++.so -> libstdc++.so.6.0.21
+│   ├── libstdc++.so.6 -> libstdc++.so.6.0.21
+│   ├── libstdc++.so.6.0.21
+│   ├── libthread_db-0.9.33.2.so
+│   ├── libthread_db.so.1 -> libthread_db-0.9.33.2.so
+│   ├── libuClibc-0.9.33.2.so
+│   ├── libutil-0.9.33.2.so
+│   ├── libutil.so.0 -> libutil-0.9.33.2.so
+│   └── modules
+│       └── 3.10.14__isvp_pike_1.0__
+├── linuxrc
+├── media
+├── mnt
+│   ├── data
+│   ├── record
+│   ├── sdcard
+│   └── sdx
+├── opt
+├── proc
+├── root
+├── run
+├── sbin
+│   ├── acpid -> ../bin/busybox
+│   ├── addgroup -> ../bin/busybox
+│   ├── adduser -> ../bin/busybox
+│   ├── arp -> ../bin/busybox
+│   ├── arping -> ../bin/busybox
+│   ├── blkid -> ../bin/busybox
+│   ├── bootchartd -> ../bin/busybox
+│   ├── brctl -> ../bin/busybox
+│   ├── chpasswd -> ../bin/busybox
+│   ├── chroot -> ../bin/busybox
+│   ├── delgroup -> ../bin/busybox
+│   ├── deluser -> ../bin/busybox
+│   ├── depmod -> ../bin/busybox
+│   ├── devmem -> ../bin/busybox
+│   ├── dhcprelay -> ../bin/busybox
+│   ├── dnsd -> ../bin/busybox
+│   ├── ether-wake -> ../bin/busybox
+│   ├── fakeidentd -> ../bin/busybox
+│   ├── fbset -> ../bin/busybox
+│   ├── fdformat -> ../bin/busybox
+│   ├── fdisk -> ../bin/busybox
+│   ├── findfs -> ../bin/busybox
+│   ├── flash_eraseall -> ../bin/busybox
+│   ├── flashcp -> ../bin/busybox
+│   ├── freeramdisk -> ../bin/busybox
+│   ├── getty -> ../bin/busybox
+│   ├── halt -> ../bin/busybox
+│   ├── httpd -> ../bin/busybox
+│   ├── hwclock -> ../bin/busybox
+│   ├── ifconfig -> ../bin/busybox
+│   ├── ifdown -> ../bin/busybox
+│   ├── ifenslave -> ../bin/busybox
+│   ├── ifplugd -> ../bin/busybox
+│   ├── ifup -> ../bin/busybox
+│   ├── inetd -> ../bin/busybox
+│   ├── init -> ../bin/busybox
+│   ├── insmod -> ../bin/busybox
+│   ├── ip -> ../bin/busybox
+│   ├── ipaddr -> ../bin/busybox
+│   ├── iplink -> ../bin/busybox
+│   ├── iproute -> ../bin/busybox
+│   ├── iprule -> ../bin/busybox
+│   ├── iptunnel -> ../bin/busybox
+│   ├── killall5 -> ../bin/busybox
+│   ├── klogd -> ../bin/busybox
+│   ├── logread -> ../bin/busybox
+│   ├── losetup -> ../bin/busybox
+│   ├── lsmod -> ../bin/busybox
+│   ├── makedevs -> ../bin/busybox
+│   ├── mdev -> ../bin/busybox
+│   ├── mkdosfs -> ../bin/busybox
+│   ├── mkfs.fat
+│   ├── mkfs.vfat -> ../bin/busybox
+│   ├── mkswap -> ../bin/busybox
+│   ├── modinfo -> ../bin/busybox
+│   ├── modprobe -> ../bin/busybox
+│   ├── nameif -> ../bin/busybox
+│   ├── nbd-client -> ../bin/busybox
+│   ├── ntpd -> ../bin/busybox
+│   ├── pivot_root -> ../bin/busybox
+│   ├── poweroff -> ../bin/busybox
+│   ├── rdate -> ../bin/busybox
+│   ├── rdev -> ../bin/busybox
+│   ├── readprofile -> ../bin/busybox
+│   ├── reboot -> ../bin/busybox
+│   ├── rmmod -> ../bin/busybox
+│   ├── route -> ../bin/busybox
+│   ├── rtcwake -> ../bin/busybox
+│   ├── setconsole -> ../bin/busybox
+│   ├── slattach -> ../bin/busybox
+│   ├── sulogin -> ../bin/busybox
+│   ├── swapoff -> ../bin/busybox
+│   ├── swapon -> ../bin/busybox
+│   ├── switch_root -> ../bin/busybox
+│   ├── sysctl -> ../bin/busybox
+│   ├── syslogd -> ../bin/busybox
+│   ├── telnetd -> ../bin/busybox
+│   ├── tftpd -> ../bin/busybox
+│   ├── tunctl -> ../bin/busybox
+│   ├── udhcpc -> ../bin/busybox
+│   ├── udhcpd -> ../bin/busybox
+│   ├── vconfig -> ../bin/busybox
+│   ├── watchdog -> ../bin/busybox
+│   └── zcip -> ../bin/busybox
+├── sys
+├── tmp
+├── usr
+│   ├── bin
+│   │   ├── audio
+│   │   │   ├── de
+│   │   │   │   ├── call
+│   │   │   │   ├── calling
+│   │   │   │   ├── connect_pwderr
+│   │   │   │   ├── connect_succ
+│   │   │   │   ├── connect_timeout
+│   │   │   │   ├── connect_wifi
+│   │   │   │   ├── not_answer
+│   │   │   │   └── reply
+│   │   │   │       ├── 21001
+│   │   │   │       ├── 21002
+│   │   │   │       └── 21003
+│   │   │   ├── di
+│   │   │   ├── du
+│   │   │   ├── es
+│   │   │   │   ├── call
+│   │   │   │   ├── calling
+│   │   │   │   ├── connect_pwderr
+│   │   │   │   ├── connect_succ
+│   │   │   │   ├── connect_timeout
+│   │   │   │   ├── connect_wifi
+│   │   │   │   ├── not_answer
+│   │   │   │   └── reply
+│   │   │   │       ├── 21001
+│   │   │   │       ├── 21002
+│   │   │   │       └── 21003
+│   │   │   ├── fr
+│   │   │   │   ├── call
+│   │   │   │   ├── calling
+│   │   │   │   ├── connect_pwderr
+│   │   │   │   ├── connect_succ
+│   │   │   │   ├── connect_timeout
+│   │   │   │   ├── connect_wifi
+│   │   │   │   ├── not_answer
+│   │   │   │   └── reply
+│   │   │   │       ├── 21001
+│   │   │   │       ├── 21002
+│   │   │   │       └── 21003
+│   │   │   ├── it
+│   │   │   │   ├── call
+│   │   │   │   ├── calling
+│   │   │   │   ├── connect_pwderr
+│   │   │   │   ├── connect_succ
+│   │   │   │   ├── connect_timeout
+│   │   │   │   ├── connect_wifi
+│   │   │   │   ├── not_answer
+│   │   │   │   └── reply
+│   │   │   │       ├── 21001
+│   │   │   │       ├── 21002
+│   │   │   │       └── 21003
+│   │   │   ├── jp
+│   │   │   │   ├── call
+│   │   │   │   ├── calling
+│   │   │   │   ├── connect_pwderr
+│   │   │   │   ├── connect_succ
+│   │   │   │   ├── connect_timeout
+│   │   │   │   ├── connect_wifi
+│   │   │   │   ├── not_answer
+│   │   │   │   └── reply
+│   │   │   │       ├── 21001
+│   │   │   │       ├── 21002
+│   │   │   │       └── 21003
+│   │   │   ├── reset
+│   │   │   ├── sd_insert
+│   │   │   ├── touch_key
+│   │   │   ├── us
+│   │   │   │   ├── call
+│   │   │   │   ├── calling
+│   │   │   │   ├── connect_pwderr
+│   │   │   │   ├── connect_succ
+│   │   │   │   ├── connect_timeout
+│   │   │   │   ├── connect_wifi
+│   │   │   │   ├── not_answer
+│   │   │   │   └── reply
+│   │   │   │       ├── 21001
+│   │   │   │       ├── 21002
+│   │   │   │       └── 21003
+│   │   │   └── wuwa
+│   │   ├── ble_app
+│   │   ├── cuftpd
+│   │   ├── fm.aosulife.com.crt
+│   │   ├── format_sd.sh
+│   │   ├── impdbg
+│   │   ├── ipc
+│   │   ├── iwconfig
+│   │   ├── iwlist
+│   │   ├── iwpriv
+│   │   ├── logcat
+│   │   ├── nvram
+│   │   ├── remount_sd.sh
+│   │   ├── restart_wifi.sh
+│   │   ├── sd_check
+│   │   ├── sdcard_detect.sh
+│   │   ├── watchdog.sh
+│   │   ├── webrtc_profile.ini
+│   │   ├── wpa_supplicant
+│   │   └── ws73
+│   │       ├── btc_cali.bin
+│   │       ├── wifi_cali.bin
+│   │       ├── wow.bin
+│   │       └── ws73.bin
+│   ├── etc
+│   │   ├── loadmod.sh
+│   │   ├── udhcpc.script
+│   │   ├── wpa_supplicant.conf
+│   │   └── ws73_cfg.ini
+│   ├── lib
+│   │   ├── libaudioProcess.so
+│   │   ├── libiw.so.29
+│   │   └── modules
+│   │       ├── audio.ko
+│   │       ├── ble_soc.ko
+│   │       ├── exfat.ko
+│   │       ├── insmod.sh
+│   │       ├── motor_driver.ko
+│   │       ├── plat_soc.ko
+│   │       ├── sensor_sc3332p_t23.ko
+│   │       ├── sinfo.ko
+│   │       ├── tx-isp-t23.ko
+│   │       └── wifi_soc.ko
+│   ├── sensor
+│   │   └── sc3332p-t23.bin
+│   └── share
+│       └── udhcpc
+│           └── default.script
+└── var
+    ├── cache -> ../tmp
+    ├── lib
+    │   └── misc -> ../../tmp
+    ├── lock -> ../tmp
+    ├── log -> ../tmp
+    ├── run -> ../run
+    ├── spool -> ../tmp
+    ├── tmp -> ../tmp
+    └── www
 
 ```
 
