@@ -4,7 +4,7 @@ Model: DC5L
 
 PTZ: no
 
-Onvif: Yes
+Onvif: TBD
 
 CPU: T23
 
