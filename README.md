@@ -10,7 +10,7 @@ CPU: T23N
 
 Sensors: sc3332p
 
-Wireless: BL-M35343XU1 _(WS73 based)_
+Wireless: [BL-M35343XU1 _(WS73 based)_](https://github.com/gtxaspec/ws73v100-wifi)
 
 
 **bootcmd:**
