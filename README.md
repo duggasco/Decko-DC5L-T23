@@ -4,8 +4,6 @@ Model: DC5L
 
 PTZ: yes
 
-Onvif: TBD
-
 CPU: T23N
 
 Sensors: sc3332p
