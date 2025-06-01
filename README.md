@@ -1390,17 +1390,37 @@ demo.bin
 
 **cat /proc/mtd:**
 ```
+dev:    size   erasesize  name
+mtd0: 00048000 00008000 "boot"
+mtd1: 001c0000 00008000 "kernel"
+mtd2: 005c0000 00008000 "rootfs"
+mtd3: 001c0000 00008000 "kernel2"
+mtd4: 005c0000 00008000 "rootfs2"
+mtd5: 000a8000 00008000 "etc"
+mtd6: 00010000 00008000 "factory"
+mtd7: 01000000 00008000 "all"
 
 ```
 
 **cat /proc/version:**
 
-``
+```
+Linux version 3.10.14__isvp_pike_1.0__ (qiaoba@qiaoba-v) (gcc version 5.4.0 (Ingenic Linux-Release3.3.0-Default(xburst1(fp32)+uclibc0.9.33.2) Smaller libc 2022.11-07) ) #1 PREEMPT Tue Sep 10 21:30:20 CST 2024
 
+```
 
 **lsmod:**
 
 ```
+motor_driver 10439 0 - Live 0xc0699000 (O)
+sensor_sc3332p_t23 10874 0 - Live 0xc068c000 (O)
+audio 47456 2 - Live 0xc0675000 (O)
+tx_isp_t23 1013359 1 sensor_sc3332p_t23, Live 0xc053d000 (O)
+sinfo 6872 0 - Live 0xc041f000 (O)
+exfat 95689 0 - Live 0xc03fb000 (O)
+ble_soc 9169 1 - Live 0xc03d2000 (O)
+wifi_soc 1090546 0 - Live 0xc029c000 (O)
+plat_soc 269144 2 ble_soc,wifi_soc, Live 0xc00e3000 (O)
 
 ```
 
@@ -1408,19 +1428,536 @@ demo.bin
 **dmesg:**
 
 ```
-
+[    0.000000] Initializing cgroup subsys cpu
+[    0.000000] Initializing cgroup subsys cpuacct
+[    0.000000] Linux version 3.10.14__isvp_pike_1.0__ (qiaoba@qiaoba-v) (gcc version 5.4.0 (Ingenic Linux-Release3.3.0-Default(xburst1(fp32)+uclibc0.9.33.2) Smaller libc 2022.11-07) ) #1 PREEMPT Tue Sep 10 21:30:20 CST 2024
+[    0.000000] bootconsole [early0] enabled
+[    0.000000] CPU0 RESET ERROR PC:C09C0E14
+[    0.000000] CPU0 revision is: 00d00100 (Ingenic Xburst)
+[    0.000000] FPU revision is: 00b70000
+[    0.000000] cgu_get_rate, parent = 1188000000, rate = 0, m = 129, n = 255, reg val = 0x081000ff
+[    0.000000] cgu_get_rate, parent = 1188000000, rate = 0, m = 129, n = 255, reg val = 0x081000ff
+[    0.000000] cgu_macphy clk should be opened!
+[    0.000000] cgu_vpu clk should be opened!
+[    0.000000] CCLK:1188MHz L2CLK:594Mhz H0CLK:200MHz H2CLK:200Mhz PCLK:100Mhz
+[    0.000000] Determined physical RAM map:
+[    0.000000]  memory: 004c4000 @ 00010000 (usable)
+[    0.000000]  memory: 0003c000 @ 004d4000 (usable after init)
+[    0.000000] User-defined physical RAM map:
+[    0.000000]  memory: 02900000 @ 00000000 (usable)
+[    0.000000] Zone ranges:
+[    0.000000]   Normal   [mem 0x00000000-0x028fffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x00000000-0x028fffff]
+[    0.000000] On node 0 totalpages: 10496
+[    0.000000] free_area_init_node: node 0, pgdat 804d0de0, node_mem_map 81000000
+[    0.000000]   Normal zone: 82 pages used for memmap
+[    0.000000]   Normal zone: 0 pages reserved
+[    0.000000]   Normal zone: 10496 pages, LIFO batch:1
+[    0.000000] Primary instruction cache 16kB, 8-way, VIPT, linesize 32 bytes.
+[    0.000000] Primary data cache 16kB, 8-way, VIPT, no aliases, linesize 32 bytes
+[    0.000000] pls check processor_id[0x00d00100],sc_jz not support!
+[    0.000000] MIPS secondary cache 64kB, 8-way, linesize 32 bytes.
+[    0.000000] pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+[    0.000000] pcpu-alloc: [0] 0
+[    0.000000] Built 1 zonelists in Zone order, mobility grouping off.  Total pages: 10414
+[    0.000000] Kernel command line: console=ttyS1,115200n8 mem=41M@0x0 rmem=23M@0x2900000 init=/linuxrc rootfstype=squashfs root=/dev/mtdblock2 rw mtdparts=jz_sfc:288k(boot),1792K(kernel),5888K(rootfs),1792K(kernel2),5888K(rootfs2),672K(etc),64K(factory),16M@0(all)
+[    0.000000] PID hash table entries: 256 (order: -2, 1024 bytes)
+[    0.000000] Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+[    0.000000] Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+[    0.000000] Memory: 35800k/41984k available (3733k kernel code, 6184k reserved, 1143k data, 240k init, 0k highmem)
+[    0.000000] SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] Preemptible hierarchical RCU implementation.
+[    0.000000] NR_IRQS:347
+[    0.000000] clockevents_config_and_register success.
+[    0.000020] Calibrating delay loop... 1185.38 BogoMIPS (lpj=5926912)
+[    0.087810] pid_max: default: 32768 minimum: 301
+[    0.092706] Mount-cache hash table entries: 512
+[    0.097740] Initializing cgroup subsys debug
+[    0.101999] Initializing cgroup subsys freezer
+[    0.108794] regulator-dummy: no parameters
+[    0.113034] NET: Registered protocol family 16
+[    0.118606] set gpio strength: 32-2
+[    0.118618] set gpio strength: 33-2set gpio strength: 34-2
+[    0.118630] set gpio strength: 35-2set gpio strength: 36-2
+[    0.118639] set gpio strength: 37-2set gpio pull: 59-90
+[    0.129407] bio: create slab <bio-0> at 0
+[    0.135548] jz-dma jz-dma: JZ SoC DMA initialized
+[    0.140534] usbcore: registered new interface driver usbfs
+[    0.146154] usbcore: registered new interface driver hub
+[    0.151584] usbcore: registered new device driver usb
+[    0.156848]  (null): set:249  hold:250 dev=100000000 h=500 l=500
+[    0.162965]  (null): set:61  hold:62 dev=100000000 h=125 l=125
+[    0.169511] Bluetooth: Core ver 2.16
+[    0.173110] NET: Registered protocol family 31
+[    0.177596] Bluetooth: HCI device and connection manager initialized
+[    0.184020] Bluetooth: HCI socket layer initialized
+[    0.188964] Bluetooth: L2CAP socket layer initialized
+[    0.194092] Bluetooth: SCO socket layer initialized
+[    0.200232] Switching to clocksource jz_clocksource
+[    0.205183] cfg80211: Calling CRDA to update world regulatory domain
+[    0.212202] NET: Registered protocol family 2
+[    0.217116] TCP established hash table entries: 512 (order: 0, 4096 bytes)
+[    0.224072] TCP bind hash table entries: 512 (order: -1, 2048 bytes)
+[    0.230470] TCP: Hash tables configured (established 512 bind 512)
+[    0.236800] TCP: reno registered
+[    0.240006] UDP hash table entries: 256 (order: 0, 4096 bytes)
+[    0.245964] UDP-Lite hash table entries: 256 (order: 0, 4096 bytes)
+[    0.252526] NET: Registered protocol family 1
+[    0.257183] RPC: Registered named UNIX socket transport module.
+[    0.263180] RPC: Registered udp transport module.
+[    0.267880] RPC: Registered tcp transport module.
+[    0.272665] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.279503] freq_udelay_jiffys[0].max_num = 10
+[    0.283974] cpufreq  udelay  loops_per_jiffy
+[    0.288345] 12000     59867   59867
+[    0.291624] 24000     119735  119735
+[    0.295055] 60000     299338  299338
+[    0.298498] 120000    598677  598677
+[    0.302076] 200000    997796  997796
+[    0.305562] 300000    1496694         1496694
+[    0.309270] 600000    2993389         2993389
+[    0.312998] 792000    3951274         3951274
+[    0.316686] 1008000   5028895         5028895
+[    0.320482] 1200000   5986779         5986779
+[    0.328820] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.335634] jffs2: version 2.2. © 2001-2006 Red Hat, Inc.
+[    0.341484] msgmni has been set to 69
+[    0.347071] io scheduler noop registered
+[    0.350998] io scheduler cfq registered (default)
+[    0.356038] wait stable.[288][cgu_vpu]
+[    0.359762] cgu_vpu can not set to 450000000, will change!!!
+[    0.366974] jz-uart.1: ttyS1 at MMIO 0x10031000 (irq = 58) is a uart1
+[    0.374762] console [ttyS1] enabled, bootconsole disabled
+[    0.389781] brd: module loaded
+[    0.395139] loop: module loaded
+[    0.399004] zram: Created 2 device(s) ...
+[    0.403338] logger: created 256K log 'log_main'
+[    0.408405] jz TCU driver register completed
+[    0.413329] the id code = 204018, the flash name is XM25QH128C
+[    0.419378] jz-sfc jz-sfc: sfc use DMA mode
+[    0.423761] jz-sfc jz-sfc: nor flash now use standard mode!
+[    0.429531] JZ SFC Controller for SFC channel 0 driver register
+[    0.435692] 8 cmdlinepart partitions found on MTD device jz_sfc
+[    0.441838] Creating 8 MTD partitions on "jz_sfc":
+[    0.446801] 0x000000000000-0x000000048000 : "boot"
+[    0.452311] 0x000000048000-0x000000208000 : "kernel"
+[    0.458000] 0x000000208000-0x0000007c8000 : "rootfs"
+[    0.463717] 0x0000007c8000-0x000000988000 : "kernel2"
+[    0.469456] 0x000000988000-0x000000f48000 : "rootfs2"
+[    0.475254] 0x000000f48000-0x000000ff0000 : "etc"
+[    0.480643] 0x000000ff0000-0x000001000000 : "factory"
+[    0.486444] 0x000000000000-0x000001000000 : "all"
+[    0.491884] SPI NOR MTD LOAD OK
+[    0.495194] tun: Universal TUN/TAP device driver, 1.6
+[    0.500422] tun: (C) 1999-2004 Max Krasnyansky <maxk@qualcomm.com>
+[    0.506994] usbcore: registered new interface driver zd1201
+[    0.512883] dwc2 otg probe start
+[    0.512924] DWC IN OTG MODE
+[    0.516450] dwc2 dwc2: Keep PHY ON
+[    0.519974] dwc2 dwc2: Using Buffer DMA mode
+[    0.524439] dwc2 dwc2: Core Release: 3.00a
+[    0.528716] dwc2 dwc2: DesignWare USB2.0 High-Speed Host Controller
+[    0.535212] dwc2 dwc2: new USB bus registered, assigned bus number 1
+[    0.542561] hub 1-0:1.0: USB hub found
+[    0.546462] hub 1-0:1.0: 1 port detected
+[    0.550682] dwc2 dwc2: DWC2 Host Initialized
+[    0.555204] dwc2 otg probe success
+[    0.555546] usbcore: registered new interface driver btusb
+[    0.561309] cgu_msc0 can not set to 24000000, will change!!!
+[    0.567236] jzmmc_v1.2 jzmmc_v1.2.0: vmmc regulator missing
+[    0.573420] jzmmc_v1.2 jzmmc_v1.2.0: register success!
+[    0.579003] TCP: cubic registered
+[    0.582538] NET: Registered protocol family 17
+[    0.587524] soc_vpu probe success,version:1.0.0-03203fd46d
+[    0.593532] input: gpio-keys as /devices/platform/gpio-keys/input/input0
+[    0.600854] drivers/rtc/hctosys.c: unable to open rtc device (rtc0)
+[    0.612348] VFS: Mounted root (squashfs filesystem) readonly on device 31:2.
+[    0.620020] Freeing unused kernel memory: 240K (804d4000 - 80510000)
+[    0.628713] dwc2 dwc2: ID PIN CHANGED!
+[    1.369736] zram0: detected capacity change from 0 to 8388608
+[    1.381570] Adding 8188k swap on /dev/zram0.  Priority:-1 extents:1 across:8188k SS
+[    1.801648] usb 1-1: new full-speed USB device number 2 using dwc2
+[    2.517371] plat_soc:W]ini_file_name@/etc/ws73_cfg.ini
+[    2.529415] plat_soc:EMERG]0:emerg log.
+[    2.533553] plat_soc:ALERT]1:alert log.
+[    2.537611] plat_soc:CRIT]2:crit log.
+[    2.541485] plat_soc:E]3:err log.
+[    2.545043] plat_soc:W]4:warning log.
+[    2.548924] plat_soc:E]custom ini[plat kern log level]: 7.
+[    2.557032] plat_soc:E]board_power_gpio_init::request power_gpio fail.
+[    2.616287] plat_soc:E]board_power_gpio_init::succ, power_gpio_idx=[6]!
+[    2.624281] plat_soc:E]board_wakeup_gpio_init::get wkup_gpio_idx invalid, value=[-1].
+[    2.632894] plat_soc:E]diag uart file open failed
+[    2.637769] plat_soc:E]zdiag_adapt_init::zdiag_channel_init err[-1].
+[    2.646781] [USB][I]OFF --> INIT
+[    2.646781] [usb_set_bus_state:87]
+[    2.653843] [USB][I]boot usb[oal_usb_probe:1420]
+[    2.658730] [USB][I]bulk_in_ep:0x81[oal_usb_boot_bulk_in_probe:1320]
+[    2.665464] [USB][I]dev->bulk_out_ep:0x1[oal_usb_boot_bulk_out_probe:1351]
+[    2.672734] [USB][I]INIT --> BOOT
+[    2.672734] [usb_set_bus_state:87]
+[    2.679767] [USB][I]usb boot probe success[oal_usb_boot_init_config:1394]
+[    2.687275] usbcore: registered new interface driver wireless_usb
+[    2.696906] plat_soc:E]hcc diag log service ini ok
+[    2.702063] plat_soc:W]plat_misc_init!
+[    2.706058] plat_soc:W]plat_init_etc::succ!
+[    2.706058]
+[    3.046768] insmod wifi ko beginning!
+[    3.053034] [osal_kthread_set_priority_ws73:50]:task is invalid!
+[    3.059353] [osal_kthread_set_priority_ws73:50]:task is invalid!
+[    3.065665] [FRW] frw_timer_init enter
+[    3.069646] frw_start_hcc_service type:6, ret=0
+[    3.074482] frw_start_hcc_service type:4, ret=0
+[    3.079260] [FRW] frw_main_init_etc end
+[    3.100970] plat_soc:E]check if var and value is NULL or blank
+[    3.106920] plat_soc:E]check if var and value is NULL or blankhwifi_custom_host_read_cfg_init finish!
+[    3.149097] hwifi_cfg_host_global_init_param: rx_stbc[1] ret[0]
+[    3.155348] hwifi_cfg_tcp_ack_param_init: tcp_ack_filter_enable[0] ret[0]
+[    3.162478] hwifi_cfg_tcp_ack_param_init: tcp_ack_max_num_start_process[2] ret[0]
+[    3.170314] hwifi_cfg_host_global_init_param: user num[8] ret[0]
+[    3.176634] hwifi_cfg_scan_para_cfg_init probe send times, ret 0 priv_value 2
+[    3.184123] get scan time, ret 0 priv_value 30
+[    3.188809] get scan count, ret 0 priv_value 2
+[    3.193509] hwifi_cfg_scan_probe_ie_cfg_init ret 0 priv_value 1
+[    3.199725] hwifi_cfg_scan_probe_del_wps_ie_cfg_init ret 0 priv_value 1
+[    3.206672] g_scan_probe_req_del_wps_ie = 1
+[    3.211090] hwifi_cfg_random_mac_addr_scan_init ret 0 priv_value 1
+[    3.217588] hwifi_cfg_random_mac_addr_scan_oui_init ret 65535 priv_value 0
+[    3.224806] hwifi_cfg_pcap_file_len_max_cfg_init ret 0 priv_value 12
+[    3.231472] hwifi_cfg_host_global_init_param: 11ax protocol enable[0] ret[0]
+[    3.238869] hwifi_cfg_host_global_init_param: smooth_phase_en[1] ret[0]
+[    3.245818] hwifi_cfg_host_global_init_param: over_ds_en[1] ret[0]
+[    3.252496] {wal_set_wlan_name_config::g_wlan_name[0]=wlan0}
+[    3.258604] {wal_set_wlan_name_config::g_wlan_name[1]=wlan1}
+[    3.264756] {wal_set_wlan_name_config::g_wlan_name[2]=p2p0}
+[    3.274207] hmac_register_pm_callback_etc:wlan_pm_get_wifi_srv_handler_etc is null
+[    3.316277] plat_soc:E]pm_svc_open::first svc open, pm_svc_power_on!
+[    3.395819] plat_soc:E]firmware_download_etc begin
+[    3.679969] usb 1-1: USB disconnect, device number 2
+[    3.685259] [USB][I]usb disconnect
+[    3.685259] [oal_usb_disconnect:1582]
+[    3.692778] [USB][I]BOOT --> DISCONNECT
+[    3.692778] [usb_set_bus_state:87]
+[    4.051637] usb 1-1: new high-speed USB device number 3 using dwc2
+[    4.262126] [USB][I]kernel usb[oal_usb_probe:1415]
+[    4.267186] [USB][I]7 5 81 2 200 0[oal_usb_system_init_bulk_ep:946]
+[    4.276166] [USB][I]EP bulk_in:129, bulk_out:1, int_in:131[oal_usb_system_ep_init:1043]
+[    4.284621] [USB][I]rw reg ep_in:[130], ep_out:[2][oal_usb_init_rw_reg_ep:924]
+[    4.292443] [USB][I]start[usb_transfer_rx_data_handle:793]
+[    4.298452] [USB][I]DISCONNECT --> WORK
+[    4.298452] [usb_set_bus_state:87]
+[    4.306120] plat_soc:E]plat handle hcc msg dev_bsp_ready_cb.
+[    4.312099] plat_soc:E]===BSP READY==
+[    4.315959] [USB][I]usb_reload succ[hcc_usb_reload:1664]
+[    4.321554] plat_soc:E]firmware_download_etc::succ!
+[    4.326749] [USB][I]oal_usb_probe success![oal_usb_system_init_config:1095]
+[    4.334379] plat_soc:W]download firmware, count [1], current time [938556]us, max time [938556]us
+[    4.350730] plat_soc:E]ini get mac_addr failed
+[    4.362231] plat_soc:W]power on, count [1], current time [1036901]us, max time [1036901]us
+[    4.370792] plat_soc:W]pm_svc_open::first svc open, pm_svc_power_on succ!
+[    4.377936] plat_soc:E]pm_svc_open::wlan open.
+[    4.382642] plat_soc:E]pm_svc_open::SUCC!
+[    4.392109] plat_soc:E]===wlan READY==
+[    4.386881] plat_soc:E]wlan_power_open_cmdhwifi_custom_adapt_mac_device_priv_ini_param::ldpc[1].
+[    4.417410] hwifi_custom_adapt_mac_device_priv_ini_param::front_switch[0].
+[    4.424683] hwifi_custom_adapt_device_priv_ini_cali_mask_param::read cali_mask[8110]ret[0]
+[    4.433356] hwifi_custom_adapt_mac_device_priv_ini_param::g_uc_wlan_open_cnt[1]priv_cali_data_up_down[0x14]
+[    4.443548] hwifi_custom_adapt_mac_device_priv_ini_param::g_uc_custom_cali_done_etc[0]auto_cali_mask[0x0]
+[    4.453556] hwifi_custom_adapt_device_priv_ini_param::data_len[46]
+[    4.460042] ***hwifi_hcc_custom_ini_data_buf:46 ***********
+[    4.466042] ***hwifi_hcc_custom_ini_data_buf:22 ***********
+[    4.479264] ===hal_initialize_phy===269===
+[    4.548342] ====hal_device_state_init_event=====623===21=
+[    4.558332] hwifi_get_country_code_etc suc: code:CN
+[    4.563774] hwifi_get_region 99: region not found
+[    4.568792] hwifi_get_region find CN in region_table_default
+[    4.643182] plat_soc:E]===wlan READY==
+[    4.647690] vap_id[0] {hmac_config_set_cus_dts_cali::cali time[28]ms ret[0]}save cali data len:864 ret:0.
+[    4.657814] plat_soc:E]38:7a:cc:ff:c3:69
+[    4.662083] plat_soc:E]wlan_close_etc, exit_later_func
+[    4.667860] plat_soc:E]pm_svc_close::not rmmod svc [0], return.
+[    4.674126] wifi_host_init_finish![wifi_cali2 cost 1590 ms].
+[    4.679988] insmod wifi ko finished!
+[    4.685120] host_module_init_etc:: host_main_init finish!
+[    4.690802] WiFi Init OK.
+[    4.693542] wifi_host_init_finish![wifi_init cost 1608 ms].
+[    4.784803] plat_soc:E]***hbsle_hcc_custom_ini_data_buf:140 ***********
+[    4.791787] [HCC] enter:hcc_adapt_bsle_msg_free
+[    4.796622] [HCC] get bsle custom para data
+[    4.801051] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.807967] [HCC] get device status:2,result:1,time:0
+[    4.813310] plat_soc:W]bsle_open_close_cmd, service[1], type[1].
+[    4.819745] plat_soc:E]pm_svc_open::SUCC!
+[    4.824127] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.831093] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.838167] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.845139] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.852253] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.859184] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.866104] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.872978] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.880437] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.887335] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.894201] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.901050] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.907912] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.914773] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.921635] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.928485] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.935347] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.942210] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.949059] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.955919] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[    4.962781] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:1
+[    4.969637] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:4,device_msg:0
+[    4.976499] [HCC] Get bsle device action msg, type=[0]
+[    4.981917] [HCC] ble_enable_reply_cb is NULL, return!
+[    4.987348] [HCC] get device status:1,result:1,time:0
+[    4.993040] [BT_DEV_INFO] register platform bt device ret:0
+[    5.003891] [BT_DEV_INFO] bt_probe:354 ret:0
+[    5.008653] [BT_DEV_INFO] register platform bt driver ret:0
+[    5.064457] exFAT: file-system version 2.2.0-3arter97
+[    5.093415] name : i2c0 nr : 0
+[    5.096587] cgu_cim can not set to 27000000, will change!!!
+[    5.192150]  sensor_read: addr=0x3107 value = 0xcc
+[    5.197633]  sensor_read: addr=0x3108 value = 0x44
+[    5.202631] cgu_cim can not set to 27000000, will change!!!
+[    5.292149]  sensor_read: addr=0x3107 value = 0xcc
+[    5.297633]  sensor_read: addr=0x3108 value = 0x44
+[    5.303133]  sensor_read: addr=0x801b value = 0xf
+[    5.308000] break for the next!
+[    5.311351] cgu_cim can not set to 27000000, will change!!!
+[    5.402153]  sensor_read: addr=0x3107 value = 0xcc
+[    5.407635]  sensor_read: addr=0x3108 value = 0x44
+[    5.413134]  sensor_read: addr=0x801b value = 0xf
+[    5.418002] probe sensor is sc3332p!
+[    5.421722] info: success sensor find : sc3332p
+[    5.426413] name : i2c2 nr : 2
+[    5.664131] cgu_isp can not set to 153000000, will change!!!
+[    5.670010] cgu_vpu can not set to 416000000, will change!!!
+[    5.703642] @@@@ tx-isp-probe ok(version H20240204a), compiler date=Feb  4 2024 @@@@@
+[    5.738786] pipe_request_dma: paddr = 0x840000
+[    5.745869] dma dma0chan24: Channel 24 have been requested.(phy id 7,type 0x06 desc a1de0000)
+[    5.755130] pipe_request_dma: paddr = 0x1e80000
+[    5.759864] dma dma0chan25: Channel 25 have been requested.(phy id 6,type 0x06 desc a1b83000)
+[    5.769086] pipe_request_dma: paddr = 0x1e00000
+[    5.773912] dma dma0chan26: Channel 26 have been requested.(phy id 5,type 0x04 desc a1de1000)
+[    5.785842] cgu_set_rate, parent = 1188000000, rate = 2048000, n = 37125, reg val = 0x04009105
+[    5.785872] cgu_enable,cgu_i2s_spk reg val = 0x24009105
+[    5.785934] cgu_set_rate, parent = 1188000000, rate = 2048000, n = 37125, reg val = 0x04009105
+[    5.785954] cgu_enable,cgu_i2s_mic reg val = 0x24009105
+[    5.801639] @@@@@ inner codec power up@@@@@@
+[    6.211673] @@@@ audio driver ok(version H20230614a) @@@@@
+[    6.245472] i2cmotor_init success!
+[    6.550496] wal_netdev_set_mac_addr
+[    6.557091] wal_netdev_open_etc,dev_name is:wlan0
+[    6.562127] plat_soc:E]pm_svc_open::not insmod service[0], return already opened.
+[    6.574718] plat_soc:E]===wlan READY==
+[    6.569969] plat_soc:E]wlan_power_open_cmdhwifi_custom_adapt_mac_device_priv_ini_param::ldpc[1].
+[    6.600143] hwifi_custom_adapt_mac_device_priv_ini_param::front_switch[0].
+[    6.607419] hwifi_custom_adapt_device_priv_ini_cali_mask_param::read cali_mask[8110]ret[0]
+[    6.616093] hwifi_custom_adapt_mac_device_priv_ini_param::g_uc_wlan_open_cnt[2]priv_cali_data_up_down[0x10]
+[    6.626285] hwifi_custom_adapt_mac_device_priv_ini_param::g_uc_custom_cali_done_etc[1]auto_cali_mask[0x0]
+[    6.636295] hwifi_custom_adapt_device_priv_ini_param::data_len[46]
+[    6.642833] ***hwifi_hcc_custom_ini_data_buf:46 ***********
+[    6.648821] ***hwifi_hcc_custom_ini_data_buf:22 ***********
+[    6.655276] func[frw_msg_exec_callback] line[324] msg_id[47] callback unregistered
+[    6.670349] ===hal_initialize_phy===269===
+[    6.740745] ====hal_device_state_init_event=====623===21=
+[    6.750651] hwifi_get_country_code_etc already set country:CN
+[    6.756827] hwifi_get_region find CN in region_table_default
+[    6.762873] hwifi_get_region find CN in region_table_default
+[    6.770263] vap_id[0] {hmac_config_set_cus_dts_cali::cali time[1]ms ret[0]}wifi_host_init_finish![wifi_cali2 cost 3643 ms].
+[    6.781921] plat_soc:E]===wlan READY==
+[    6.790160] hmac_fsm_change_state_etc state 5, vap_id 1
+[    7.629237] probe ok ------->sc3332p 27M
+[    7.712174] -----sc3332p_detect: 734 ret = 0, v = 0xcc
+[    7.718055] -----sc3332p_detect: 742 ret = 0, v = 0x44
+[    7.723434] sc3332p chip found @ 0x30 (i2c0)
+[    7.727903] sensor driver version H20240522a
+[    7.921647] Ivdc init! direct_mode is 1
+[    8.027113] sc3332p stream on
+[    8.091429] -----sc3332p_set_vflip: 974 val = 0x0, enable = 3
+[    8.405701] cgu_set_rate, parent = 1188000000, rate = 4096000, n = 37125, reg val = 0x28009105
+[    8.463986] [406] MOTOR_IRCUT_CLOSE! setdata = 0x0
+[    9.071539] cgu_set_rate, parent = 1188000000, rate = 4096000, n = 37125, reg val = 0x28009105
+[    9.089731] [406] MOTOR_IRCUT_CLOSE! setdata = 0x0
+[    9.574058] [406] MOTOR_IRCUT_CLOSE! setdata = 0x0
+[    9.804025] [BT_DEV_INFO] bt_misc_dev_open:128
+[    9.817840] plat_soc:W]bsle_open_close_cmd, service[1], type[1].
+[    9.828055] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:4,device_msg:0
+[    9.839906] [HCC] Get bsle device action msg, type=[0]
+[    9.851187] [BT_DEV_INFO]  ble btc open finish
+[    9.861450] [HCC] ble set ble state ble_state 1
+[    9.881987] [BT_DEV_INFO]  ble open time:78
+[   10.374624] [406] MOTOR_IRCUT_CLOSE! setdata = 0x0
+[  610.311780] wait stop  q->num_buffers=3 q->done_count=1
+[  610.392178] streamoff stop！！
+[  610.492983] [406] MOTOR_IRCUT_CLOSE! setdata = 0x0
+[  611.001516] [406] MOTOR_IRCUT_CLOSE! setdata = 0x0
+[  611.271670] wait stop  q->num_buffers=1 q->done_count=1
+[  611.277083] streamoff stop！！
+[  611.301693] wait stop  q->num_buffers=2 q->done_count=1
+[  611.314303] vb is null, buf get:0x80000000 lastaddr = 0x80000000 idx=0 isp_index = 0
+[  611.361633] streamoff stop！！
+[  611.365483] vb is null, buf get:0x80000000 lastaddr = 0x80000000 idx=0 isp_index = 611
+[  611.415189] vb is null, buf get:0x80000000 lastaddr = 0x80000000 idx=0 isp_index = 0
+[  611.465635] vb is null, buf get:0x80000000 lastaddr = 0x80000000 idx=0 isp_index = -2142558192
+[  611.516078] vb is null, buf get:0x80000000 lastaddr = 0x80000000 idx=0 isp_index = 0
+[  611.566524] vb is null, buf get:0x80000000 lastaddr = 0x80000000 idx=0 isp_index = -2142558192
+[  611.616969] vb is null, buf get:0x80000000 lastaddr = 0x80000000 idx=0 isp_index = -2142558192
+[  611.667413] vb is null, buf get:0x80000000 lastaddr = 0x80000000 idx=0 isp_index = -2142558192
+[  611.717856] vb is null, buf get:0x80000000 lastaddr = 0x80000000 idx=0 isp_index = 0
+[  611.768303] vb is null, buf get:0x80000000 lastaddr = 0x80000000 idx=0 isp_index = -2142558192
+[  611.818747] vb is null, buf get:0x80000000 lastaddr = 0x80000000 idx=0 isp_index = -2142558192
+[  611.869191] vb is null, buf get:0x80000000 lastaddr = 0x80000000 idx=0 isp_index = -2142558192
+[  611.919635] vb is null, buf get:0x80000000 lastaddr = 0x80000000 idx=0 isp_index = 0
+[  611.962112] sc3332p stream off
+[  613.161453] watchdog watchdog0: watchdog did not stop!
+[  613.231703] [BT_DEV_INFO] bt_misc_dev_release:264
+[  613.236578] plat_soc:W]bsle_open_close_cmd, service[1], type[0].
+[  613.243357] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:4,device_msg:1
+[  613.250211] [HCC] Get bsle device action msg, type=[1]
+[  613.255668] [BT_DEV_INFO]  ble btc close finish
+[  613.260448] [HCC] ble set ble state ble_state 0
+[  613.265369] [BT_DEV_INFO]  ble close ,time:33
+[  614.321435] probe ok ------->sc3332p 27M
+[  614.402175] -----sc3332p_detect: 734 ret = 0, v = 0xcc
+[  614.408063] -----sc3332p_detect: 742 ret = 0, v = 0x44
+[  614.413412] sc3332p chip found @ 0x30 (i2c0)
+[  614.417829] sensor driver version H20240522a
+[  614.591646] Ivdc init! direct_mode is 1
+[  614.627471] sc3332p stream on
+[  614.711370] -----sc3332p_set_vflip: 974 val = 0x0, enable = 3
+[  615.068519] [406] MOTOR_IRCUT_CLOSE! setdata = 0x0
+[  615.680906] [406] MOTOR_IRCUT_CLOSE! setdata = 0x0
+[  615.880586] [BT_DEV_INFO] bt_misc_dev_open:128
+[  615.891192] plat_soc:W]bsle_open_close_cmd, service[1], type[1].
+[  615.905914] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[  615.917572] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[  615.929969] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:1
+[  615.942530] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:4,device_msg:0
+[  615.954840] [HCC] Get bsle device action msg, type=[0]
+[  615.965830] [BT_DEV_INFO]  ble btc open finish
+[  615.976058] [HCC] ble set ble state ble_state 1
+[  616.013034] [BT_DEV_INFO]  ble open time:133
+[  616.089064] [406] MOTOR_IRCUT_CLOSE! setdata = 0x0
+[  616.909255] [406] MOTOR_IRCUT_CLOSE! setdata = 0x0
+[ 1216.502736] [406] MOTOR_IRCUT_CLOSE! setdata = 0x0
+[ 1216.541794] wait stop  q->num_buffers=3 q->done_count=1
+[ 1216.611666] streamoff stop！！
+[ 1217.017444] [406] MOTOR_IRCUT_CLOSE! setdata = 0x0
+[ 1217.421643] wait stop  q->num_buffers=1 q->done_count=0
+[ 1217.427987] streamoff stop！！
+[ 1217.451662] wait stop  q->num_buffers=2 q->done_count=0
+[ 1217.473603] vb is null, buf get:0x80000000 lastaddr = 0x80000000 idx=0 isp_index = 0
+[ 1217.521627] streamoff stop！！
+[ 1217.525015] vb is null, buf get:0x80000000 lastaddr = 0x80000000 idx=0 isp_index = 1217
+[ 1217.574494] vb is null, buf get:0x80000000 lastaddr = 0x80000000 idx=0 isp_index = -2142558192
+[ 1217.624937] vb is null, buf get:0x80000000 lastaddr = 0x80000000 idx=0 isp_index = -2142558192
+[ 1217.661806] sc3332p stream off
+[ 1218.861914] watchdog watchdog0: watchdog did not stop!
+[ 1218.921697] [BT_DEV_INFO] bt_misc_dev_release:264
+[ 1218.926575] plat_soc:W]bsle_open_close_cmd, service[1], type[0].
+[ 1218.933355] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:4,device_msg:1
+[ 1218.940208] [HCC] Get bsle device action msg, type=[1]
+[ 1218.945663] [BT_DEV_INFO]  ble btc close finish
+[ 1218.950441] [HCC] ble set ble state ble_state 0
+[ 1218.955363] [BT_DEV_INFO]  ble close ,time:33
+[ 1220.010701] probe ok ------->sc3332p 27M
+[ 1220.092178] -----sc3332p_detect: 734 ret = 0, v = 0xcc
+[ 1220.098090] -----sc3332p_detect: 742 ret = 0, v = 0x44
+[ 1220.103439] sc3332p chip found @ 0x30 (i2c0)
+[ 1220.107884] sensor driver version H20240522a
+[ 1220.281651] Ivdc init! direct_mode is 1
+[ 1220.317051] sc3332p stream on
+[ 1220.401386] -----sc3332p_set_vflip: 974 val = 0x0, enable = 3
+[ 1220.762825] [406] MOTOR_IRCUT_CLOSE! setdata = 0x0
+[ 1221.374947] [406] MOTOR_IRCUT_CLOSE! setdata = 0x0
+[ 1221.566433] [BT_DEV_INFO] bt_misc_dev_open:128
+[ 1221.575217] plat_soc:W]bsle_open_close_cmd, service[1], type[1].
+[ 1221.592491] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[ 1221.604429] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:2
+[ 1221.616813] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:2,device_msg:1
+[ 1221.629289] [HCC] start hcc_adapt_bsle_msg_rx_proc,type:4,device_msg:0
+[ 1221.641680] [HCC] Get bsle device action msg, type=[0]
+[ 1221.652635] [BT_DEV_INFO]  ble btc open finish
+[ 1221.662877] [HCC] ble set ble state ble_state 1
+[ 1221.682567] [BT_DEV_INFO]  ble open time:116
+[ 1221.783054] [406] MOTOR_IRCUT_CLOSE! setdata = 0x0
+[ 1222.561100] [406] MOTOR_IRCUT_CLOSE! setdata = 0x0
 
 ```
 
 **ps:**
 
 ```
+  PID USER       VSZ STAT COMMAND
+    1 root      1832 S    init
+    2 root         0 SW   [kthreadd]
+    3 root         0 SW   [ksoftirqd/0]
+    5 root         0 SW<  [kworker/0:0H]
+    6 root         0 SW   [kworker/u2:0]
+    7 root         0 SW   [rcu_preempt]
+    8 root         0 SW   [rcu_bh]
+    9 root         0 SW   [rcu_sched]
+   10 root         0 SW   [watchdog/0]
+   11 root         0 SW<  [khelper]
+   12 root         0 SW<  [writeback]
+   13 root         0 SW<  [bioset]
+   14 root         0 SW<  [kblockd]
+   15 root         0 SW   [khubd]
+   17 root         0 SW<  [cfg80211]
+   18 root         0 SW<  [rpciod]
+   19 root         0 SW   [kswapd0]
+   20 root         0 SW   [fsnotify_mark]
+   21 root         0 SW<  [nfsiod]
+   22 root         0 SW<  [crypto]
+   36 root         0 SW   [kworker/u2:1]
+   37 root         0 SW<  [deferwq]
+   38 root         0 SW<  [kworker/0:1H]
+   54 root         0 SWN  [jffs2_gcd_mtd5]
+   80 root         0 SW   [hcc_ap]
+   82 root         0 SW<  [plat_exception_]
+   85 root         0 SW   [wifi_frw_msg]
+   86 root         0 SW   [wifi_frw_txdata]
+   87 root         0 SW   [wifi_rxdata]
+  107 root         0 SW   [usb_wifi_rx_dat]
+  108 root         0 SW   [usb_rx_msg_thre]
+  135 root         0 SW   [irq/37-isp-m0]
+  137 root         0 SW   [irq/38-isp-w02]
+  141 root         0 SW   [irq/46-isp-ivdc]
+  211 root      1832 S    {watchdog.sh} /bin/sh /usr/bin/watchdog.sh
+  216 root      1848 S    -sh
+  217 root      1828 S    telnetd
+  325 root         0 SW   [kworker/0:0]
+  422 root         0 SW   [kworker/0:1]
+  467 root      378m S    ipc /var/log/ipc.log
+  484 root         0 DW   [isp_fw_process]
+  600 root      1832 R    ps
 
 ```
 
 **mount -t debugfs none /sys/kernel/debug; cat /sys/kernel/debug/gpio:**
 
 ```
+GPIOs 0-31, GPIO A:
+ gpio-6   (sysfs               ) out hi
+ gpio-18  (sc3332p_reset       ) out hi
+
+GPIOs 32-63, GPIO B:
+ gpio-50  (mmc_power           ) out hi
+ gpio-57  (sysfs               ) out lo
+ gpio-58  (sysfs               ) out hi
+ gpio-59  (mmc_detect          ) in  hi
+ gpio-60  (sysfs               ) out lo
+ gpio-61  (sysfs               ) out lo
+ gpio-62  (reset key           ) in  hi
+ gpio-63  (sysfs               ) out lo
+
+GPIOs 64-95, GPIO C:
 
 ```
 
@@ -1428,17 +1965,114 @@ demo.bin
 **/etc/init.d/rcS:**
 
 ```
+#!/bin/sh
+
+basedir=`cd $(dirname $0);pwd -P`
+# echo "enter rcs"
+# cat /etc/passwd
+# cat /etc/shadow
+# mount
+for initscript in $basedir/S[0-9][0-9]*
+do
+        if [ -x $initscript ]; then
+                echo "[RCS]: $initscript"
+                source $initscript
+        fi
+done
 
 ```
 
 **/etc/inittab:**
 
 ```
+# /etc/inittab init(8) configuration for BusyBox
+#
+# Copyright (C) 1999-2004 by Erik Andersen <andersen@codepoet.org>
+#
+#
+# Note, BusyBox init doesn't support runlevels.  The runlevels field is
+# completely ignored by BusyBox init. If you want runlevels, use sysvinit.
+#
+#
+# Format for each entry: <id>:<runlevels>:<action>:<process>
+#
+# <id>: WARNING: This field has a non-traditional meaning for BusyBox init!
+#
+#       The id field is used by BusyBox init to specify the controlling tty for
+#       the specified process to run on.  The contents of this field are
+#       appended to "/dev/" and used as-is.  There is no need for this field to
+#       be unique, although if it isn't you may have strange results.  If this
+#       field is left blank, it is completely ignored.  Also note that if
+#       BusyBox detects that a serial console is in use, then all entries
+#       containing non-empty id fields will _not_ be run.  BusyBox init does
+#       nothing with utmp.  We don't need no stinkin' utmp.
+#
+# <runlevels>: The runlevels field is completely ignored.
+#
+# <action>: Valid actions include: sysinit, respawn, askfirst, wait, once,
+#                                  restart, ctrlaltdel, and shutdown.
+#
+#       Note: askfirst acts just like respawn, but before running the specified
+#       process it displays the line "Please press Enter to activate this
+#       console." and then waits for the user to press enter before starting
+#       the specified process.
+#
+#       Note: unrecognised actions (like initdefault) will cause init to emit
+#       an error message, and then go along with its business.
+#
+# <process>: Specifies the process to be executed and it's command line.
+#
+# Note: BusyBox init works just fine without an inittab. If no inittab is
+# found, it has the following default behavior:
+#         ::sysinit:/etc/init.d/rcS
+#         ::askfirst:/bin/sh
+#         ::ctrlaltdel:/sbin/reboot
+#         ::shutdown:/sbin/swapoff -a
+#         ::shutdown:/bin/umount -a -r
+#         ::restart:/sbin/init
+#
+# if it detects that /dev/console is _not_ a serial console, it will
+# also run:
+#         tty2::askfirst:/bin/sh
+#         tty3::askfirst:/bin/sh
+#         tty4::askfirst:/bin/sh
+#
+# Boot-time system configuration/initialization script.
+# This is run first except when booting in single-user mode.
+#
+::sysinit:/etc/init.d/rcS
 
-```
+# /bin/sh invocations on selected ttys
+#
+# Note below that we prefix the shell commands with a "-" to indicate to the
+# shell that it is supposed to be a login shell.  Normally this is handled by
+# login, but since we are bypassing login in this case, BusyBox lets you do
+# this yourself...
+#
+# Start an "askfirst" shell on the console (whatever that may be)
+#::askfirst:-/bin/sh
+# Start an "askfirst" shell on /dev/tty2-4
+# tty2::askfirst:-/bin/sh
+# tty3::askfirst:-/bin/sh
+# tty4::askfirst:-/bin/sh
 
-**/etc/sync.ini:**
+# /sbin/getty invocations for selected ttys
+# tty4::respawn:/sbin/getty 38400 tty5
+# tty5::respawn:/sbin/getty 38400 tty6
 
-```
+# Example of how to put a getty on a serial line (for a terminal)
+::respawn:/sbin/getty -L ttyS1 115200 vt100 -n root -I "Auto login as root ..."
+#::respawn:/sbin/getty -L ttyS1 9600 vt100
+#
+# Example how to put a getty on a modem line.
+#::respawn:/sbin/getty 57600 ttyS2
+
+# Stuff to do when restarting the init process
+::restart:/sbin/init
+
+# Stuff to do before rebooting
+::ctrlaltdel:/sbin/reboot
+::shutdown:/bin/umount -a -r
+::shutdown:/sbin/swapoff -a
 
 ```
